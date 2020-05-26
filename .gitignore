@@ -11,7 +11,7 @@
 [Mm]emoryCaptures/
 [Aa]ssets/AssetStoreTools*
 ProjectSettings/ProjectVersion.txt
-ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
