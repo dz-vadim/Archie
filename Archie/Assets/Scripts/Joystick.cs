@@ -27,6 +27,12 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
             _touchPoint.x /= _joystickBG.rectTransform.sizeDelta.x;
             _touchPoint.y /= _joystickBG.rectTransform.sizeDelta.y;
             print(_touchPoint);
+
+            //normalize touchpoint coordinates
+            _inputVector = new Vector2(_touchPoint.x*2-1, _touchPoint.y * 2 - 1);
+            _inputVector = (_inputVector.magnitude > 1.0f) ? _inputVector.normalized : _inputVector;
+            //set ui element to touchpoint coordinates
+            //_joystickHendle.rectTransform.anchoredPosition = new Vector2(_inputVector * (_joystickBG.rectTransform.sizeDelta.x/2),);
         }
     }
 
