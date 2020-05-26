@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVector;
     private CharacterController ch_controller;
     private Animator ch_animator;
- //   private MobileController mContr;
+    private Joystick _mainJoystick;
     void Start()
     {
         ch_controller = GetComponent<CharacterController>();
-   //     ch_animator = GetComponent<Animator>();
-  //      mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileController>();
+        //     ch_animator = GetComponent<Animator>();
+              _mainJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     private void CharacterMove()
     {
         moveVector = Vector3.zero;
-        moveVector.x = Input.GetAxis("Horizontal") * speedMove;
-        moveVector.z = Input.GetAxis("Vertical") * speedMove;
+        moveVector.x = _mainJoystick.Horizontal() * speedMove;
+        moveVector.z = _mainJoystick.Vertical() * speedMove;
 /*
         if (moveVector.x != 0 || moveVector.z != 0)
             ch_animator.SetBool("Walk", true);

@@ -27,6 +27,13 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
             _touchPoint.x /= _joystickBG.rectTransform.sizeDelta.x;
             _touchPoint.y /= _joystickBG.rectTransform.sizeDelta.y;
             print(_touchPoint);
+
+            //normalize touch point coordinates
+            _inputVector = new Vector2(_touchPoint.x * 2 - 1, _touchPoint.y * 2 - 1);
+            _inputVector = (_inputVector.magnitude > 1.0f) ? _inputVector.normalized : _inputVector;
+
+            _joystickHendle.rectTransform.anchoredPosition = new Vector2(_inputVector.x * (_joystickBG.rectTransform.sizeDelta.x / 2),
+                                                                         _inputVector.y * (_joystickBG.rectTransform.sizeDelta.y / 2));
         }
     }
 
@@ -39,5 +46,16 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     {
         _inputVector = Vector2.zero;
         _joystickHendle.rectTransform.anchoredPosition = Vector2.zero;
+    }
+
+    public float Horizontal()
+    {
+        if (_inputVector.x != 0) return _inputVector.x;
+        else return Input.GetAxis("Horizontal");
+    }
+    public float Vertical()
+    {
+        if (_inputVector.y != 0) return _inputVector.y;
+        else return Input.GetAxis("Vertical");
     }
 }
