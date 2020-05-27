@@ -16,7 +16,10 @@ public class ProjectileSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            Instantiate(projectile, transform.position, transform.rotation);
+
         }
+
+        //Instantiate(projectile, transform.position, Quaternion.identity);
     }
 }
