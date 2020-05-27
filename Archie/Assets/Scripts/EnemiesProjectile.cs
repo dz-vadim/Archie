@@ -26,16 +26,18 @@ public class EnemiesProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            if (collision.transform.gameObject.tag == "Player")
-            {
-                //Destroy(hit.transform.gameObject);
-                print(collision.transform.name);
-                print(Time.time);
-            }
-            if (collision.transform.gameObject.tag != "Water")
-            {
-                Destroy(gameObject);
-            }
+        if (collision.transform.gameObject.tag == "Player")
+        {
+            print(collision.transform.name);
+            print(Time.time);
+        }
+        if (collision.transform.gameObject.tag == "Enemy")
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
 }
