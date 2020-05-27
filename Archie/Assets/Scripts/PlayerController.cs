@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speedMove;
-    public float jumpPower;
     private float gravityForce;
     private Vector3 moveVector;
     private CharacterController ch_controller;

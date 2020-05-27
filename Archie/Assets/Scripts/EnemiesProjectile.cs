@@ -10,12 +10,32 @@ public class EnemiesProjectile : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _target = new Vector3(_player.position.x, 0f, _player.position.z);
+        _target = _player.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target, speed * Time.deltaTime);
+        if (transform.position == _target)
+        {
+            Destroy(gameObject);
+        }
+        Destroy(gameObject, 10);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+            if (collision.transform.gameObject.tag == "Player")
+            {
+                //Destroy(hit.transform.gameObject);
+                print(collision.transform.name);
+                print(Time.time);
+            }
+            if (collision.transform.gameObject.tag != "Water")
+            {
+                Destroy(gameObject);
+            }
+    }
+
 }
