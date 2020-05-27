@@ -7,6 +7,8 @@ public class EnemiesProjectile : MonoBehaviour
     public float speed;
     private Transform _player;
     private Vector3 _target;
+    private int _damage = 20;
+
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -28,7 +30,7 @@ public class EnemiesProjectile : MonoBehaviour
     {
         if (collision.transform.gameObject.tag == "Player")
         {
-            print(collision.transform.name);
+            collision.transform.gameObject.GetComponent<PlayerHealthStatus>().TakeDamege(_damage);
             print(Time.time);
         }
         if (collision.transform.gameObject.tag == "Enemy")
