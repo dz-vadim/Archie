@@ -447,6 +447,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &403295944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 821041058122752377, guid: 3ac2fa44075260244beeb142f2e6f11a,
+    type: 3}
+  m_PrefabInstance: {fileID: 821041059174901267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &403295945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403295944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcba58bd66242041b13653255f51dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 1858612660}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984078323}
+  - component: {fileID: 984078324}
   m_Layer: 0
   m_Name: Projectile Spawner
   m_TagString: Untagged
@@ -884,9 +904,29 @@ Transform:
   m_Father: {fileID: 571571472}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984078324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984078322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3df0b43c551184f9264158406983e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 7047126303166746092, guid: 16efecf6852cadd4ea1cd2ee8be62515,
+    type: 3}
 --- !u!4 &1095468907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 821041058122752376, guid: 3ac2fa44075260244beeb142f2e6f11a,
+    type: 3}
+  m_PrefabInstance: {fileID: 821041059174901267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1858612660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1858612660, guid: 3ac2fa44075260244beeb142f2e6f11a,
     type: 3}
   m_PrefabInstance: {fileID: 821041059174901267}
   m_PrefabAsset: {fileID: 0}
@@ -1345,7 +1385,7 @@ PrefabInstance:
     - target: {fileID: 342351947908522208, guid: 00eb0ba58e905ff44994cda757751752,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 342351947908522209, guid: 00eb0ba58e905ff44994cda757751752,
         type: 3}
@@ -1492,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airman
       objectReference: {fileID: 0}
+    - target: {fileID: 821041058122752377, guid: 3ac2fa44075260244beeb142f2e6f11a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 821041058631964106, guid: 3ac2fa44075260244beeb142f2e6f11a,
         type: 3}
       propertyPath: m_Enabled
@@ -1534,10 +1579,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 23206976, guid: 874a2212f87c24b428cf2465a620678f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 23206977, guid: 874a2212f87c24b428cf2465a620678f, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1227522326, guid: 874a2212f87c24b428cf2465a620678f, type: 3}
+      propertyPath: shootingSpawn
+      value: 
+      objectReference: {fileID: 984078322}
     - target: {fileID: 2312632231025672683, guid: 874a2212f87c24b428cf2465a620678f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1680,7 +1733,7 @@ PrefabInstance:
     - target: {fileID: 4181032046615777642, guid: 587e0c44dbae5b0499a221c6f392e90d,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4181032047850846749, guid: 587e0c44dbae5b0499a221c6f392e90d,
         type: 3}

@@ -14,7 +14,8 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+            print(FindClosestEnemy().transform.position);
     }
 
     private GameObject FindClosestEnemy()

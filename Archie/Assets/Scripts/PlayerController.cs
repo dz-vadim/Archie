@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject shootingSpawn;
     public float speedMove;
     private float gravityForce;
     private Vector3 moveVector;
@@ -14,12 +15,14 @@ public class PlayerController : MonoBehaviour
     {
         ch_controller = GetComponent<CharacterController>();
         //     ch_animator = GetComponent<Animator>();
-              _mainJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        _mainJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         CharacterMove();
         GamingGravity();
     }
@@ -28,16 +31,25 @@ public class PlayerController : MonoBehaviour
         moveVector = Vector3.zero;
         moveVector.x = _mainJoystick.Horizontal() * speedMove;
         moveVector.z = _mainJoystick.Vertical() * speedMove;
-/*
-        if (moveVector.x != 0 || moveVector.z != 0)
-            ch_animator.SetBool("Walk", true);
-        else ch_animator.SetBool("Walk", false);
-*/
+        if (moveVector == Vector3.zero)
+        {
+            shootingSpawn.SetActive(true); //activate shooting
+        }
+        else
+        {
+            shootingSpawn.SetActive(false);
+        }
+        /*
+                if (moveVector.x != 0 || moveVector.z != 0)
+                    ch_animator.SetBool("Walk", true);
+                else ch_animator.SetBool("Walk", false);
+        */
         if (Vector3.Angle(Vector3.forward, moveVector) > 1f || Vector3.Angle(Vector3.forward, moveVector) == 0)
         {
             Vector3 direct = Vector3.RotateTowards(transform.forward, moveVector, speedMove, 0.0f);
             transform.rotation = Quaternion.LookRotation(direct);
         }
+
         moveVector.y = gravityForce;
         ch_controller.Move(moveVector * Time.deltaTime);
     }
