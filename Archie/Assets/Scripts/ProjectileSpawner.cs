@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour
 {
-    private Transform _player;
+    //private Transform _player;
     public GameObject projectile;
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+       // _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -16,7 +16,7 @@ public class ProjectileSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(projectile, _player.position,Quaternion.identity);
+            Instantiate(projectile, transform.position, Quaternion.identity);
         }
     }
 }
