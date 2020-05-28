@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class EnemiesProjectile : MonoBehaviour
+public class PlayerProjectile : MonoBehaviour
 {
     public float speed;
     private int _damage = 20;
@@ -18,13 +18,13 @@ public class EnemiesProjectile : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.gameObject.tag == "Player")
+        if (collision.transform.gameObject.tag == "Enemy")
         {
             collision.transform.gameObject.GetComponent<PlayerHealthStatus>().TakeDamege(_damage);
-           // print(Time.time);
+            print(Time.time);
             Destroy(gameObject);
         }
-        else if (collision.transform.gameObject.tag == "IgnoreCollision")
+        else if (collision.transform.gameObject.tag == "Water")
         {
             Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
         }

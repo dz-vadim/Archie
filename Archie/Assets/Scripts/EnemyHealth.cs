@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //craate a father class
-public class PlayerHealthStatus : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth;
+    public int maxHealth = 100;
     private int currentHealth;
     public HealthBar health;
     void Start()
@@ -28,7 +28,8 @@ public class PlayerHealthStatus : MonoBehaviour
 
         if (currentHealth == 0)
         {
-            print("GameOver");
+            Destroy(gameObject);
         }
     }
 }
+
