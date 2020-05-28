@@ -7,12 +7,11 @@ public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
-    public HealthBar health;
+    //public HealthBar health;
     void Start()
     {
         currentHealth = maxHealth;
-        health.SetMaxHealth(maxHealth);
-
+        //health.SetMaxHealth(maxHealth);
     }
     void Update()
     {
@@ -24,9 +23,9 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamege(int damage)
     {
         currentHealth -= damage;
-        health.SetHealth(currentHealth);
+       // health.SetHealth(currentHealth);
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

@@ -6,12 +6,14 @@ using UnityEngine;
 public class AirmanBehavior : MonoBehaviour
 {
     private float timer;
+    private GameObject _player;
     public GameObject projectileSpawner; 
     // Start is called before the first frame update
     void Start()
     {
         projectileSpawner.SetActive(false);
         timer = 0f;
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -19,6 +21,7 @@ public class AirmanBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            transform.LookAt(_player.transform);
             timer = 0f;
             projectileSpawner.SetActive(true);
         }
@@ -30,6 +33,10 @@ public class AirmanBehavior : MonoBehaviour
     }
 
     private void Shooting()
+    {
+
+    }
+    private void Moving()
     {
 
     }

@@ -20,8 +20,8 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.transform.gameObject.tag == "Enemy")
         {
-            collision.transform.gameObject.GetComponent<PlayerHealthStatus>().TakeDamege(_damage);
-            print(Time.time);
+            collision.transform.gameObject.GetComponentInParent<EnemyHealth>().TakeDamege(_damage);
+            //print(Time.time);
             Destroy(gameObject);
         }
         else if (collision.transform.gameObject.tag == "Water")

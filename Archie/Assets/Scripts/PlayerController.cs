@@ -22,13 +22,10 @@ public class PlayerController : MonoBehaviour
         ch_controller = GetComponent<CharacterController>();
         //     ch_animator = GetComponent<Animator>();
         _mainJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
-
-        _enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
-
-    // Update is called once per frame
     void Update()
     {
+        _enemies = GameObject.FindGameObjectsWithTag("Enemy");
         CharacterMove();
         GamingGravity();
     }
@@ -37,10 +34,10 @@ public class PlayerController : MonoBehaviour
         moveVector = Vector3.zero;
         moveVector.x = _mainJoystick.Horizontal() * speedMove;
         moveVector.z = _mainJoystick.Vertical() * speedMove;
-        if (moveVector == Vector3.zero)
+        if ((moveVector == Vector3.zero) && (GameObject.FindGameObjectWithTag("Enemy")))
         {
-            shootingSpawn.SetActive(true); //activate shooting
-            LookClosestEnemy();
+            transform.LookAt(FindClosestEnemy().transform);
+            shootingSpawn.SetActive(true);
             //ch_animator.SetBool("Walk", false);
         }
         else
@@ -62,15 +59,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!ch_controller.isGrounded) { gravityForce -= 20f * Time.deltaTime; }
         else { gravityForce = -1f; }            
-    }
-
-    private void LookClosestEnemy()
-    {
-        if (GameObject.FindGameObjectWithTag("Enemy"))
-        {
-            //print(FindClosestEnemy().name);
-            transform.LookAt(FindClosestEnemy().transform);
-        }
     }
 
     public GameObject FindClosestEnemy()

@@ -12,7 +12,6 @@ public class PlayerHealthStatus : MonoBehaviour
     {
         currentHealth = maxHealth;
         health.SetMaxHealth(maxHealth);
-
     }
     void Update()
     {
