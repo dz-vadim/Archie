@@ -29,7 +29,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
             print(_touchPoint);
 
             //normalize touch point coordinates
-            _inputVector = new Vector2(_touchPoint.x * 2 - 1, _touchPoint.y * 2 - 1);
+            _inputVector = new Vector2(_touchPoint.x * 2, _touchPoint.y * 2 - 1);
             _inputVector = (_inputVector.magnitude > 1.0f) ? _inputVector.normalized : _inputVector;
 
             _joystickHendle.rectTransform.anchoredPosition = new Vector2(_inputVector.x * (_joystickBG.rectTransform.sizeDelta.x / 2),

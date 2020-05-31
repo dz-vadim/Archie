@@ -22,6 +22,9 @@ public class AirmanBehavior : MonoBehaviour
         projectileSpawner.SetActive(false);
         _player = GameObject.FindGameObjectWithTag("Player");
         ch_controller = GetComponent<CharacterController>();
+        _newDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+
+
 
     }
 
@@ -33,8 +36,13 @@ public class AirmanBehavior : MonoBehaviour
             SwitchState();
             _timer = 0f;
         }
-        else Moving();
+
         _timer += Time.deltaTime;
+
+        if (_isMoving) { Shooting(); }
+        else { Moving(); }
+
+
     }
 
     private void Shooting()
@@ -53,7 +61,7 @@ public class AirmanBehavior : MonoBehaviour
 
     private void SwitchState()
     {
-        if (_isMoving) { Shooting(); _isMoving = false; }
-        else { Moving(); _isMoving = true; }
+        if (_isMoving) {_isMoving = false; }
+        else {_isMoving = true; }
     }
 }
