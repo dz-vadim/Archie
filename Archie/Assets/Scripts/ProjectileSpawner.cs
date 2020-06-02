@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour
 {
-    private float _timer;
+    public float timeToSpawn;
+    public float timer;
     public GameObject projectile;
     void Start()
     {
-        _timer = 0f;
+        timeToSpawn = 1f;
+        timer = timeToSpawn;
+       // Instantiate(projectile, transform.position, transform.rotation);
     }
 
     void Update()
     {
-        if (_timer > 0.5f)
+        if (timer <= 0f)
         {
+            timer = timeToSpawn;
             Instantiate(projectile, transform.position, transform.rotation);
-            _timer = 0f;
         }
-        _timer += Time.deltaTime;
+        timer -= Time.deltaTime;
     }
 
 }

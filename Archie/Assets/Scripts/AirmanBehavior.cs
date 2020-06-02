@@ -23,9 +23,6 @@ public class AirmanBehavior : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         ch_controller = GetComponent<CharacterController>();
         _newDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-
-
-
     }
 
     // Update is called once per frame
@@ -54,8 +51,10 @@ public class AirmanBehavior : MonoBehaviour
     }
     private void Moving()
     {
-       // _timer = 0f;
+        // _timer = 0f;
         ch_controller.Move(_newDirection * _speed * Time.deltaTime);
+        ch_controller.transform.LookAt(_newDirection.normalized);
+
         projectileSpawner.SetActive(false);
     }
 

@@ -37,12 +37,14 @@ public class PlayerController : MonoBehaviour
         if ((moveVector == Vector3.zero) && (GameObject.FindGameObjectWithTag("Enemy")))
         {
             transform.LookAt(FindClosestEnemy().transform);
-            shootingSpawn.SetActive(true);
+            shootingSpawn.GetComponent<ProjectileSpawner>().enabled = true;
+            shootingSpawn.GetComponent<ProjectileSpawner>().timer = 0f;
             //ch_animator.SetBool("Walk", false);
         }
         else
         {
-            shootingSpawn.SetActive(false);
+            shootingSpawn.GetComponent<ProjectileSpawner>().enabled = false;
+
             //ch_animator.SetBool("Walk", false);
         }
 
